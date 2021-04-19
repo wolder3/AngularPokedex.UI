@@ -1,0 +1,63 @@
+<div class="container mt-5">
+  <div class="card mb-3">
+    <div class="card-header">
+      <div>
+        <button class="btn btn-primary" [routerLink]="['/']">Regresar</button>
+      </div>
+    </div>
+    <div class="text-center">
+      <img
+        src="{{ fncGetImagePokemon() }}"
+        class="card-img-top"
+        alt="..."
+        style="max-width: 40%"
+      />
+    </div>
+    <div class="card-body">
+      <h5 class="card-title mb-5">{{ data.name }}</h5>
+
+      <table class="table table-bordered">
+        <tr class="border">
+          <th>Bases</th>
+          <th>Types</th>
+        </tr>
+        <tr class="border">
+          <td class="col-sm-6">
+            <label class="text-primary">HP: </label
+            ><span> {{ data.bases.hp }}</span>
+
+            <br />
+            <label class="text-secondary">Attack: </label>
+            <span> {{ data.bases.attack }}</span>
+
+            <br />
+            <label class="text-success">Defense: </label>
+            <span> {{ data.bases.defense }}</span>
+            <br />
+            <label class="text-warning">SpAttack: </label
+            ><span> {{ data.bases.spAttack }}</span>
+            <br />
+            <label class="text-info">SpDefense: </label>
+            <span> {{ data.bases.spDefense }}</span>
+            <br />
+            <label class="text-dark">Speed: </label>
+            <span> {{ data.bases.speed }}</span>
+          </td>
+          <td class="col-sm-6">
+            <ul>
+              <li class="badge bg-success m-2" *ngFor="let type of dataType">
+                {{ type.name }}
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="card-footer">
+      <h5 class="card-title">Moves</h5>
+      <ul>
+        <li *ngFor="let move of dataMove">{{ move.name }}</li>
+      </ul>
+    </div>
+  </div>
+</div>

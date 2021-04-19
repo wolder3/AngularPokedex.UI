@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  Api_Endpoint: 'https://localhost:44313//api/v1',
+  Api_Resource: 'https://localhost:44313/Images',
 };
 
 /*

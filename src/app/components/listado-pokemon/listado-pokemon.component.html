@@ -1,0 +1,73 @@
+<div class="row">
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand">Pokedex</a>
+      <form class="d-flex">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          [(ngModel)]="message"
+          name="message"
+          id="message"
+        />
+        <button class="btn btn-outline-success" (click)="addToKeywords()">
+          Search
+        </button>
+      </form>
+    </div>
+  </nav>
+</div>
+<div class="container mt-5"></div>
+<div class="row">
+  <div
+    class="col-md-6 col-lg-4"
+    *ngFor="
+      let pokemon of dataPokemon
+        | paginate: { itemsPerPage: 18, currentPage: p }
+    "
+  >
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4 text-center mt-5">
+          <img src="{{ fncGetImagePokemon(pokemon.id) }}" alt="..." />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title text-danger">{{ pokemon.name }}</h5>
+            <label class="text-primary">HP: </label
+            ><span> {{ pokemon.bases.hp }}</span>
+
+            <br />
+            <label class="text-secondary">Attack: </label>
+            <span> {{ pokemon.bases.attack }}</span>
+
+            <br />
+            <label class="text-success">Defense: </label>
+            <span> {{ pokemon.bases.defense }}</span>
+            <br />
+            <label class="text-warning">SpAttack: </label
+            ><span> {{ pokemon.bases.spAttack }}</span>
+            <br />
+            <label class="text-info">SpDefense: </label>
+            <span> {{ pokemon.bases.spDefense }}</span>
+            <br />
+            <label class="text-dark">Speed: </label>
+            <span> {{ pokemon.bases.speed }}</span>
+          </div>
+          <a
+            class="btn btn-danger btn-sm m-2"
+            [routerLink]="['/pokemon', pokemon.id]"
+          >
+            Ver mas detalle
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row text-center">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
